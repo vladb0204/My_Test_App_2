@@ -1,6 +1,9 @@
 package myproject.kotlin.criminai_test_app_1
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
-data class Crime(val id: UUID = UUID.randomUUID(), var title: String = "",
+@Entity
+data class Crime(@PrimaryKey val id: UUID = UUID.randomUUID(), var title: String = "",
                  var date: Date = Date(), var isSolved: Boolean = false)
