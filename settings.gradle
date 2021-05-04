@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "Criminai_Test_App_1"
