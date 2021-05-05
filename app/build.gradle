@@ -25,6 +25,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "/data/data/myproject.kotlin.criminai_test_app_1/databases/crime-database-shm")
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

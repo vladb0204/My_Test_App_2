@@ -2,8 +2,11 @@ package myproject.kotlin.criminai_test_app_1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import java.util.*
 
-class MainActivity : AppCompatActivity() {
+private const val TAG = "MainActivity"
+
+class MainActivity : AppCompatActivity(), CrimeListFragment.Callbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -12,7 +15,13 @@ class MainActivity : AppCompatActivity() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (currentFragment == null) {
             val fragment = CrimeListFragment.newInstance()
-            supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit()
+            supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment)
+                .addToBackStack(null).commit()
         }
+    }
+
+    override fun onCrimeSelected(crimeId: UUID) {
+        val fragment = CrimeFragment.newInstance(crimeId = crimeId)
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
     }
 }
