@@ -3,6 +3,8 @@ package myproject.kotlin.criminai_test_app_1
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.Room
+import myproject.kotlin.criminai_test_app_1.database.CrimeDatabase
+import myproject.kotlin.criminai_test_app_1.database.migration_2_3
 import java.lang.IllegalStateException
 import java.util.*
 import java.util.concurrent.Executors
@@ -12,7 +14,7 @@ private const val DATABASE_NAME = "crime-database"
 class CrimeRepository private constructor(context: Context) {
 
     private val database : CrimeDatabase = Room.databaseBuilder(context.applicationContext,
-            CrimeDatabase::class.java, DATABASE_NAME).build()
+            CrimeDatabase::class.java, DATABASE_NAME).addMigrations(migration_2_3).build()
     private val crimeDao = database.crimeDao()
     private val executor = Executors.newSingleThreadExecutor()
 

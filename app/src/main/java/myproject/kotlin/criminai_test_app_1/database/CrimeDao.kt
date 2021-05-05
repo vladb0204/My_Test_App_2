@@ -1,9 +1,11 @@
-package myproject.kotlin.criminai_test_app_1
+package myproject.kotlin.criminai_test_app_1.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import myproject.kotlin.criminai_test_app_1.Crime
 import java.util.*
 
 @Dao
@@ -18,6 +20,6 @@ interface CrimeDao {
     @Update
     public fun updateCrime(crime: Crime)
 
-    @Update
+    @Insert
     public fun addCrime(crime: Crime)
 }
