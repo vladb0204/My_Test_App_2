@@ -17,15 +17,15 @@ class CrimeDetailViewModel() : ViewModel() {
             crimeRepository.getCrime(crimeId)
         }
 
-    public fun loadCrime(crimeId: UUID) {
+    fun loadCrime(crimeId: UUID) {
         crimeIdLiveData.value = crimeId
     }
 
-    public fun saveCrime(crime: Crime) {
+    fun saveCrime(crime: Crime) {
         crimeRepository.updateCrime(crime)
     }
 
-    public fun getPhotoFile(crime: Crime): File {
+    fun getPhotoFile(crime: Crime): File {
         return crimeRepository.getPhotoFile(crime)
     }
 }
